@@ -1,16 +1,18 @@
 # Using pandas
 
+print("Pandas Calculations")
+print("")
 # setup
 import pandas as pd
 df = pd.read_csv('Sample_Dataset.csv')
 # mean
-df['Total'].mean()
+print("Total:",df['Total'].mean(),"Native:",df['Native'].mean())
 # median
-df['Total'].median()
+print(df['Total'].median(),df['Native'].median())
 # mode
-df['Total'].mode()
+print(df['Total'].mode(),df['Native'].mode())
 # range
-df['Total'].max()-df['Total'].min()
+print([df['Total'].max(),df['Total'].min()],[df['Native'].max(),df['Native'].min()])
 
 
 # Using NumPy
@@ -20,14 +22,14 @@ import numpy as np
 df = np.genfromtxt('Sample_Dataset.csv', delimiter = ',', usecols = (2,3))
 df = np.delete(df, (0), axis=0)
 # mean
-df.mean(axis=0)
+print(df.mean(axis=0))
 # medium
-np.median(df, axis=0)
+print(np.median(df, axis=0))
 # mode
 from scipy import stats
-stats.mode(df,axis=0)
+print(stats.mode(df,axis=0))
 # range
-np.amax(df, axis=0) - np.amin(df,axis=0)
+print(np.amax(df, axis=0),np.amin(df,axis=0))
 
 
 # In Basic Python
@@ -43,6 +45,7 @@ native = list(native)
 # mean
 total_mean = float(sum(total))/float(len(total)) #mean total
 native_mean = float(sum(native))/float(len(native)) #mean native
+print(total_mean,native_mean)
 # median
 total.sort()
 native.sort()
@@ -66,8 +69,8 @@ native.sort()
 r = len(total)
 r = r-1 
 r = int(r)
-total_range = total[r] - total[0] # total range
-native_range = native[r] - native[0] # native range
+print(total[r],total[0]) # total range
+print(native[r],native[0]) # native range
 # mode total
 store_tot = []
 tot_mode = []
@@ -81,6 +84,7 @@ for item in total:
  for number in total:
   if store1 == number:
    tot_mode.append(number) # total mode
+print(tot_mode)
 # mode native
 store_nat = []
 nat_mode = []
@@ -94,3 +98,4 @@ for item in native:
  for number in native:
   if store2 == number:
    nat_mode.append(number) # native mode
+print(nat_mode)
